@@ -4,7 +4,7 @@ Prestashop 1.6.9.х Integration SitemapPro with SmartBlog
 
 Prestashop's SitemapPro doesn't work with SmartBlog so the post urls don't go into the sitemap file. The code below solves this problem. 
 
-Installation. You nedd to open /modules/sitemappro/classes/sitemap/SitemapBuilder.php and add it below this line: $sitemap->createSitemapIndex(ToolsSMP::getShopDomainWithBase());<br>
+Installation. You need to open /modules/sitemappro/classes/sitemap/SitemapBuilder.php and add it below this line: $sitemap->createSitemapIndex(ToolsSMP::getShopDomainWithBase());<br>
 Then go to admin page and regenerate the sitemap.
 The code is:<br>
 $p_urls = Db::getInstance()->ExecuteS('SELECT post.`id_smart_blog_post`, CONCAT(post.`id_smart_blog_post`,"_",postlang.link_rewrite,".html") as link '.'FROM `'._DB_PREFIX_.'smart_blog_post` post, '._DB_PREFIX_.'smart_blog_post_lang postlang '.'WHERE post.active=1 and post.id_smart_blog_post=postlang.id_smart_blog_post '.'and postlang.id_lang='.(int)$l['id_lang'].' order by id_smart_blog_post asc');
