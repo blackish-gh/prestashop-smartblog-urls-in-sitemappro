@@ -4,7 +4,7 @@ Prestashop Integration SitemapPro with SmartBlog
 
 Prestashop's SitemapPro doesn't work with SmartBlog so the post urls don't go into the sitemap file. The code below solves this problem. 
 
-Installation. You nedd to open /modules/sitemappro/classes/sitemap/SitemapBuilder.php and add it below this line: $sitemap->createSitemapIndex(ToolsSMP::getShopDomainWithBase());
+Installation. You nedd to open /modules/sitemappro/classes/sitemap/SitemapBuilder.php and add it below this line: $sitemap->createSitemapIndex(ToolsSMP::getShopDomainWithBase());<br>
 Then go to admin page and regenerate the sitemap.
 The code is:<br>
 $p_urls = Db::getInstance()->ExecuteS('SELECT post.`id_smart_blog_post`, CONCAT(post.`id_smart_blog_post`,"_",postlang.link_rewrite,".html") as link '.'FROM `'._DB_PREFIX_.'smart_blog_post` post, '._DB_PREFIX_.'smart_blog_post_lang postlang '.'WHERE post.active=1 and post.id_smart_blog_post=postlang.id_smart_blog_post '.'and postlang.id_lang='.(int)$l['id_lang'].' order by id_smart_blog_post asc');
@@ -16,7 +16,7 @@ Where '/SmartBlog/' is the url of your blog
 Модуль SitemapPro от Prestashop не поддерживает модуль SmartBlog, поэтому в карте сайта отсутствуют ссылки на записи блога. Код ниже решает эту проблему.
 
 Установка. Вам нужно открыть /modules/sitemappro/classes/sitemap/SitemapBuilder.php и вставить код перед:
-$sitemap->createSitemapIndex(ToolsSMP::getShopDomainWithBase());
+$sitemap->createSitemapIndex(ToolsSMP::getShopDomainWithBase());<br>
 Дальше зайти в админку, настройки модуля и заново сгенерировать карту сайта.
 Сам код:<br>
 $p_urls = Db::getInstance()->ExecuteS('SELECT post.`id_smart_blog_post`, CONCAT(post.`id_smart_blog_post`,"_",postlang.link_rewrite,".html") as link '.'FROM `'._DB_PREFIX_.'smart_blog_post` post, '._DB_PREFIX_.'smart_blog_post_lang postlang '.'WHERE post.active=1 and post.id_smart_blog_post=postlang.id_smart_blog_post '.'and postlang.id_lang='.(int)$l['id_lang'].' order by id_smart_blog_post asc');
