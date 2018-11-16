@@ -12,6 +12,7 @@ $p_urls = Db::getInstance()->ExecuteS('SELECT post.`id_smart_blog_post`, CONCAT(
 		foreach ($p_urls as $p_url)
 		    $sitemap->addItem('/SmartBlog/' . $p_url['link'] . '', '0.7', 'weekly', 'Today', array(), $p_urls); <br>
 Where '/SmartBlog/' is the url of your blog
+Or just replace the file
 
 Модуль SitemapPro от Prestashop не поддерживает модуль SmartBlog, поэтому в карте сайта отсутствуют ссылки на записи блога. Код ниже решает эту проблему.
 
@@ -24,3 +25,4 @@ $p_urls = Db::getInstance()->ExecuteS('SELECT post.`id_smart_blog_post`, CONCAT(
 		foreach ($p_urls as $p_url)
 		    $sitemap->addItem('/SmartBlog/' . $p_url['link'] . '', '0.7', 'weekly', 'Today', array(), $p_urls); <br>
 Где '/SmartBlog/' это адрес Вашего блога
+Или просто замените файл
