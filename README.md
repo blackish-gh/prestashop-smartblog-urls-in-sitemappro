@@ -1,6 +1,6 @@
 # smartblog-urls-in-sitemappro
 
-Prestashop Integration SitemapPro with SmartBlog
+Prestashop 1.6.9.х Integration SitemapPro with SmartBlog
 
 Prestashop's SitemapPro doesn't work with SmartBlog so the post urls don't go into the sitemap file. The code below solves this problem. 
 
