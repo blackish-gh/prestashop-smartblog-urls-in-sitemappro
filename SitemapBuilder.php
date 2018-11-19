@@ -133,7 +133,7 @@ class SitemapBuilder
 		$p_urls = Db::getInstance()->ExecuteS('SELECT post.`id_smart_blog_post`, CONCAT(post.`id_smart_blog_post`,"_",postlang.link_rewrite,".html") as link '.'FROM `'._DB_PREFIX_.'smart_blog_post` post, '._DB_PREFIX_.'smart_blog_post_lang postlang '.'WHERE post.active=1 and post.id_smart_blog_post=postlang.id_smart_blog_post '.'and postlang.id_lang='.(int)$l['id_lang'].' order by id_smart_blog_post asc');
 		
 		foreach ($p_urls as $p_url)
-		    $sitemap->addItem('/SmartBlog/' . $p_url['link'] . '', '0.7', 'weekly', 'Today', array(), $p_urls);
+		    $sitemap->addItem('/SmartBlog/' . $p_url['link'] . '', '0.7', 'weekly', 'Today', array(), '');
 		/* END feature for adding SmartBlog posts to Sitemap Pro */
 		
 		$sitemap->createSitemapIndex(ToolsSMP::getShopDomainWithBase());
